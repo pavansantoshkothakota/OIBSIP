@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Temperature Converter</title>
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+                  background-color:#f2f2f2;
+		}
+
+		h1 {
+			text-align: center;
+		}
+
+		form {
+			max-width: 500px;
+			margin: 0 auto;
+			background-color: #F5DEB3;
+			padding: 20px;
+			border-radius: 5px;
+			box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+		}
+
+		label {
+			display: block;
+			margin-bottom: 10px;
+			font-weight: bold;
+		}
+
+		input[type="number"] {
+			padding: 10px;
+			width: 100%;
+			border-radius: 5px;
+			border: 1px solid #ccc;
+			box-sizing: border-box;
+		}
+
+		select {
+			padding: 10px;
+			width: 100%;
+			border-radius: 5px;
+			border: 1px solid #ccc;
+			box-sizing: border-box;
+		}
+
+		button {
+			background-color: #4CAF50;
+			color: #fff;
+			padding: 15px 20px;
+			border: none;
+			border-radius: 5px;
+			cursor: pointer;
+			margin-top: 10px;
+		}
+
+		button:hover {
+			background-color: #3e8e41;
+		}
+
+		.result {
+			margin-top: 20px;
+			padding: 10px;
+			border-radius: 5px;
+			background-color: #eee;
+			text-align: center;
+			font-size: 24px;
+			font-weight: bold;
+		}
+	</style>
+</head>
+<body >
+	<h1><em>Temperature Converter</em></h1>
+
+	<form>
+		<label for="temperature">Temperature:</label>
+		<input type="number" id="temperature" name="temperature" placeholder="Enter temperature..." required>
+
+		<label for="unit">Unit:</label>
+		<select id="unit" name="unit">
+			<option value="celsius">Celsius</option>
+			<option value="fahrenheit">Fahrenheit</option>
+		</select>
+
+		<button type="button" onclick="convert()">Convert</button>
+	</form>
+
+	<div class="result" id="result"></div>
+
+	<script>
+		function convert() {
+			var temperature = parseFloat(document.getElementById("temperature").value);
+			var unit = document.getElementById("unit").value;
+			var resultElement = document.getElementById("result");
+
+			if (isNaN(temperature)) {
+				resultElement.innerHTML = "Please enter a valid number.";
+				return;
+			}
+
+			if (unit === "celsius") {
+				var result = (temperature * 9/5) + 32;
+				resultElement.innerHTML = temperature + " &#8451; = " + result + " &#8457;";
+			} else {
+				var result = (temperature - 32) * 5/9;
+				resultElement.innerHTML = temperature + " &#8457; = " + result + " &#8451;";
+			}
+		}
+	</script>
+</body>
+</html>
+
